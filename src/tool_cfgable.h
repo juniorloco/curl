@@ -38,7 +38,6 @@ typedef enum {
 struct GlobalConfig;
 
 struct OperationConfig {
-  CURL *easy;               /* A copy of the handle from GlobalConfig */
   bool remote_time;
   char *random_file;
   char *egd_file;
@@ -268,7 +267,6 @@ struct OperationConfig {
 };
 
 struct GlobalConfig {
-  CURL *easy;                     /* Once we have one, we keep it here */
   int showerror;                  /* -1 == unset, default => show errors
                                       0 => -s is used to NOT show errors
                                       1 => -S has been used to show errors */

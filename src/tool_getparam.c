@@ -1351,7 +1351,7 @@ ParameterError getparameter(const char *flag, /* f or -long-flag */
           size = 0;
         }
         else {
-          char *enc = curl_easy_escape(config->easy, postdata, (int)size);
+          char *enc = curl_easy_escape(NULL, postdata, (int)size);
           Curl_safefree(postdata); /* no matter if it worked or not */
           if(enc) {
             /* now make a string with the name from above and append the
@@ -2206,9 +2206,6 @@ ParameterError parse_args(struct GlobalConfig *config, int argc,
             if(operation->next) {
               /* Initialise the newly created config */
               config_init(operation->next);
-
-              /* Copy the easy handle */
-              operation->next->easy = config->easy;
 
               /* Set the global config pointer */
               operation->next->global = config;
